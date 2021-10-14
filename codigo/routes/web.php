@@ -19,9 +19,14 @@ use App\Http\Controllers\FornecedorController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/index',[ClenteController::class, 'index']);
+Route::get('/create',[ClenteController::class, 'create']);
+Route::post('/store',[ClenteController::class, 'store']);
 
 Route::get('/clientes',[ClenteController::class, 'show']);
 
-Route::get('/fornecedores', [FornecedorController::class, 'show']);
+Route::get('/index', [FornecedorController::class, 'index']);
+Route::get('/create',[FornecedorController::class, 'create']);
+Route::post('/store',[FornecedorController::class, 'store']);
 
 
