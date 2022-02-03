@@ -26,9 +26,15 @@
         </div>
         <div class="modal-body">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Dashboard</li>
-            <li class="list-group-item">Compras</li>
-            <li class="list-group-item">Vendas</li>
+                <li class="list-group-item">
+                    <a class="nav-link active" aria-current="page" href="/sisconve/public/dashboard">Dashboard</a>   
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link active" aria-current="page" href="/sisconve/public/compra">Compras</a>   
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('venda.page') }}">Vendas</a>   
+                </li>
         </ul>
         </div>
         <div class="modal-footer">
@@ -37,15 +43,10 @@
         </div>
     </div>
     </div>
-    <div class="btn-group d-flex justify-content-center m-5" role="group" aria-label="Basic checkbox toggle button group">
-        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btncheck1">Dashboard</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btncheck2">Compras</label>
-
-        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btncheck3">Vendas</label>
+    <div class="btn-group d-flex justify-content-center m-5">
+        <a href="/sisconve/public/dashboard" class="btn btn-outline-secondary" aria-current="page">Dashboard</a>
+        <a href="/sisconve/public/compra" class="btn btn-outline-secondary">Compras</a>
+        <a href="{{ route('venda.page') }}" class="btn btn-outline-secondary">Vendas</a>
     </div>
     @yield('content')
 </body>
