@@ -20,7 +20,7 @@
         <div class="container">
             <div class="row content">
                 <div class="col-md-6 mb-3">
-                    <img src="../public/img/inv.png" class="img-fluid" alt="image">
+                    <img src="{{ asset('img/inv.png') }}" class="img-fluid" alt="image">
                 </div>
                 <div class="col-md-6">
                     <h3 class="signin-text mb-3"> Entrar</h3>
