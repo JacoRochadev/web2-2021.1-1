@@ -8,6 +8,7 @@ use App\Models\ItemVenda;
 use App\Models\Produto;
 use App\Models\Venda;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VendaController extends Controller
 {
@@ -18,7 +19,12 @@ class VendaController extends Controller
         $this->produto = $produto;
     }
     public function create(){
-        return view('venda/venda');
+        $vendas = DB::table('vendas')->select('vendas.id', 'clientes.nome', 'vendas.valor_total', 'itens_venda.quantidade')
+        ->join('clientes', 'clientes.id', '=', 'vendas.id_cliente')
+        ->leftJoin('itens_venda', 'itens_venda.id', '=', 'itens_venda.id_venda')
+        ->get();
+        return view('venda/venda', ['vendas' => $vendas]);
+
     }
     public function cadastrarVenda(){
         $clientes = $this->cliente->orderBy('nome','ASC')->get();
@@ -28,6 +34,7 @@ class VendaController extends Controller
     }
     public function store(Request $request)
     {
+        
         $produtoArray = $request->id_produto;
         $quantidadeArray = $request->quantidade;
         $total = 0.0;
@@ -39,9 +46,10 @@ class VendaController extends Controller
                 return redirect()->route('venda.cadastrarVenda')->with('error', 'não tem quantidade suficiente no estoque');
             }
         }
+        
         $vendas = new Venda();
 
-        $vendas->id_caixa = 1;//$request->id_caixa;
+        $vendas->id_caixa = 6;//$request->id_caixa;
         $vendas->id_cliente = $request->id_cliente;
         $vendas->num_parcelas = 1;
         $vendas->valor_total += $total;
@@ -61,6 +69,12 @@ class VendaController extends Controller
         }
 
         
-        return view('venda/venda');
+        return view('venda/venda', ['vendas' => $vendas]);
+    }
+
+    public function show() {
+        $vendas = Venda::all();
+        return view('venda/venda', ['vendas' => $vendas]);
+
     }
 }

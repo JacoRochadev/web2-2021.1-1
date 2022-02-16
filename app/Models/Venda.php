@@ -15,4 +15,13 @@ class Venda extends Model
         'num_parcelas',
         'valor_total'
     ];
+
+    public function relCliente()
+    {
+        return $this->hasOne('App\Cliente', 'id', 'id_cliente');
+    }
+    public function relItensVenda()
+    {
+        return $this->hasMany(ItemVenda::class);
+    }
 }

@@ -18,23 +18,25 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nome do Produto</th>
-      <th scope="col">Valor de venda</th>
+      <th scope="col">Nome do Cliente</th>
       <th scope="col">Quantidade</th>
       <th scope="col">Valor Total</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
-  <!-- <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>10.00</td>
-      <td>10</td>
-      <td>100.00</td>
-      <td>ex</td>
-    </tr>
+  <tbody>
+    @foreach ($vendas as $venda)
+      <tr>
+        <th scope="row">{{ $venda->id }}</th>
+        <th>{{ $venda->nome }}</th>
+        <th>{{ $venda->quantidade }}</th>
+        <th>{{ $venda->valor_total }}</th>
+        <th>teste</th>
+      </tr>
+  @endforeach
+
   </tbody>
-</table> -->
+</table>
     
 </body>
   <footer class="footer d-flex justify-content-center">

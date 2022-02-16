@@ -15,4 +15,9 @@ class ItemVenda extends Model
         'quantidade',
         'valor_unitario'
     ];
+
+    public function relVenda()
+    {
+        return $this->belongsTo(Venda::class);
+    }
 }
